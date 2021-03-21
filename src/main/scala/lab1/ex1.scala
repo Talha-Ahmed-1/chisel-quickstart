@@ -1,6 +1,9 @@
 package lab1
 
 import chisel3._
+import chisel3.util._
+import chisel3.core
+
 
 class ex1 ( counterBits : UInt ) extends Module {
     val io = IO ( new Bundle {
@@ -8,12 +11,12 @@ class ex1 ( counterBits : UInt ) extends Module {
     })
 
     val max = (1. U << counterBits ) - 1. U
-    val count = RegInit (0. U (16. W ) )
-    when ( count === max ) {
-        count := 0. U
+    val count = RegInit (0.S (16. W ) )
+    when ( count === max.asSInt ) {
+        count := 0. S
     } .otherwise {
-        count := count + 1. U
+        count := count + 15. S
     }
-    io . result := count (15. U )
+    io . result := count(15.U)
     println ( s" counter created with max value $max " )
 }
