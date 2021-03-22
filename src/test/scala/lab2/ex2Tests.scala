@@ -15,9 +15,9 @@ class ex2Tests extends FreeSpec with ChiselScalatestTester {
       c.io.in5.poke(1.B)
       c.io.in6.poke(0.B)
       c.io.in7.poke(1.B)
-      c.io.sel.poke(4.U)
+      c.io.sel.poke(7.U)
       c.clock.step(1)
-      c.io.out.expect(0.B)
+      c.io.out.expect(1.B)
     }
   }
 }
