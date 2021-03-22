@@ -1,0 +1,13 @@
+1) Possible				CHISEL-CHISEL
+1) Possible				CHISEL-CHISEL
+1) Possible				CHISEL-CHISEL
+4) Not Possible 	There is no	CHISEL-CHISEL
+			explicit clock
+			in chisel.
+5) Possible				CHISEL-CHISEL
+6) Possible				CHISEL-CHISEL
+7) Possible				CHISEL-SCALA
+8) Possible				CHISEL-SCALA
+9) Possible				CHISEL-SCALA
+10) Possible				SCALA-CHISEL 
+11) Possible				SCALA-CHISEL
