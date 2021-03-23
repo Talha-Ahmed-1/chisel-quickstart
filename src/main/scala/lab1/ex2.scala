@@ -45,7 +45,7 @@ class ex2 ( counterBits : UInt ) extends Module {
     })
 
     val max = (1. U << counterBits ) - 1. U
-    val count = RegInit (0.S (16. W ) )
+    val count = RegInit (0.S (5. W ) )
     when ( count === max.asSInt ) {
         count := 0. S
     } .elsewhen(count(15.U) === 1.B){

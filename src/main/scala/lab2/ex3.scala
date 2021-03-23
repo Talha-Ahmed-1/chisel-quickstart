@@ -7,7 +7,7 @@ class ex3 extends Module{
     val io = IO(new encoderIO)
 
     val sel = Cat(io.in1, io.in2, io.in3, io.in4)
-    io.out1 := Mux1H(sel, Seq("b00".U, "b01".U, 10.U, 11.U))
+    io.out1 := Mux1H(sel, Seq("b00".U, "b01".U, "b10".U, "b11".U))
 
     // val sel2 = Cat(io.in3, io.in4)
 

@@ -10,12 +10,12 @@ class ex1 ( counterBits : UInt ) extends Module {
         val result = Output ( Bool () )
     })
 
-    val max = (1. U << counterBits ) - 1. U
+    val max = (1.U << counterBits ) - 1.U
     val count = RegInit (0.S (16. W ) )
     when ( count === max.asSInt ) {
         count := 0. S
     } .otherwise {
-        count := count + 15. S
+        count := count + 1. S
     }
     io . result := count(15.U)
     println ( s" counter created with max value $max " )

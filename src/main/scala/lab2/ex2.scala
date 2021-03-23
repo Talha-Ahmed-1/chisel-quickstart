@@ -19,8 +19,6 @@ class ex2 extends Module {
         val out = Output ( Bool () )
     })
 
-val condition1 = 0.U | 1.U | 2.U | 3.U
-val condition2 = 4.U | 5.U | 6.U | 7.U
 io.out := MuxLookup(io.sel(2) , false.B, Array(
     ( 0.U ) -> MuxLookup(io.sel, false.B, Array(
         (0. U ) -> io . in0 ,
