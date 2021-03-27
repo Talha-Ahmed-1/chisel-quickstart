@@ -21,14 +21,15 @@ class task1 extends Module {
         ))
 
     //First Method
-    io.br_taken := Mux(io.branch, branch(io), false.B)
+    // io.br_taken := Mux(io.branch, branch(io), false.B)
+
 
     // // Second Method
-    // io.br_taken := false.B
-    // switch (io.branch) {
-    //     is (true.B) {io.br_taken := branch(io)}
-    //     is (false.B) {io.br_taken := false.B}
-    // }
+    io.br_taken := false.B
+    switch (io.branch) {
+        is (true.B) {io.br_taken := branch(io)}
+        is (false.B) {io.br_taken := false.B}
+    }
 
 
 }
