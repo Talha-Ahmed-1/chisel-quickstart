@@ -20,13 +20,26 @@ class task1 extends Module {
             ((io.arg_x >= io.arg_y) && (io.fnct3 === "b101".U | io.fnct3 === "b111".U) ) -> true.B
         ))
 
-    // def b = (io.branch === 1.B).asInstanceOf[Int] +1
-    // // def c = b < 1
-    // def check = if (b == 2) branch(io) else false.B
-    // io.br_taken := check
-    
-
+    //First Method
     io.br_taken := Mux(io.branch, branch(io), false.B)
+
+    // // Second Method
+    // io.br_taken := false.B
+    // switch (io.branch) {
+    //     is (true.B) {io.br_taken := branch(io)}
+    //     is (false.B) {io.br_taken := false.B}
+    // }
+
+
 }
+
+
+
+// def b = (io.branch === 1.B).asInstanceOf[Int]
+    // def c = b.asInstanceOf[Boolean]
+    // print(b)
+    // printf("%b \n",(io.branch.asUInt === 1.U))
+    // def check = if (true) branch(io) else false.B
+    // io.br_taken := check
 
 // println (( new chisel3 . stage . ChiselStage ) . emitVerilog (new task1 ) )
