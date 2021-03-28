@@ -7,8 +7,46 @@
 
 // object Main extends App{
 //     println("Main file of lab 3.")
-//     println(ChiselStage.emitVerilog(new Decoder_2to4))
+//     println(ChiselStage.emitVerilog(new Valid_Interf))
 // }
+
+// class Valid_Interf extends Module {
+//     val DataWithValid = Valid (new DataWithoutValid )
+// }
+
+// class DataWithoutValid extends Bundle {
+//     val data_bits = Output ( UInt (8. W ) )
+// }
+// val DataWithValid = Valid (new DataWithoutValid )
+
+// import chisel3 . _
+// import chisel3 . util . _
+// import chisel3.iotesters.{ChiselFlatSpec , Driver , PeekPokeTester}
+// class Valid_Interf extends Module {
+//     val io = IO ( new Bundle {
+//     val in = Flipped ( Valid ( UInt (8. W ) ) ) // valid = Input , bits = Input
+//     val out = Valid ( UInt (8. W ) ) // valid = Output , bits = Output
+//     })
+//     io . out := RegNext ( io . in )
+// }
+// println ( chisel3 . Driver . emitVerilog (new Valid_Interf ) )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // class LM_IO_Interface extends Bundle {
 //     val in = Input ( UInt (2. W ) )
