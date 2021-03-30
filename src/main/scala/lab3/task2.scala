@@ -4,9 +4,9 @@ import chisel3._
 import chisel3.util._
 
 class LM_IO_Interface_ImmdValGen extends Bundle {
-val instr = Input ( UInt (32. W ) )
-val immd_se = Output ( UInt (32. W ) )
-val pc = Input(UInt(32.W))
+    val instr = Input ( UInt (32. W ) )
+    val immd_se = Output ( UInt (32. W ) )
+    val pc = Input(UInt(32.W))
 }
 class task2 extends Module {
     val io = IO (new LM_IO_Interface_ImmdValGen )
@@ -33,17 +33,7 @@ class task2 extends Module {
         // U
         (opcode === 23.U) -> u,
         // I
-        (19.U >= opcode >= 3.U || opcode === 27.U || opcode === 115.U) -> i
+        (opcode <= 19.U || opcode >= 3.U || opcode === 27.U || opcode === 115.U) -> i
     ))
-
-
-
-
-
-    // when (io.instr == 128) printf(p"--------------\n1111\n---------------")
-    // else printf(p"--------------\n0000\n---------------")
-
-    // io.immd_se := Mux(opcode(io.instr) === 255.U,io.instr(7,0),io.instr(7,0))
-
 
 }

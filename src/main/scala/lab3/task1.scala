@@ -23,7 +23,6 @@ class task1 extends Module {
     //First Method
     // io.br_taken := Mux(io.branch, branch(io), false.B)
 
-
     // // Second Method
     io.br_taken := false.B
     switch (io.branch) {
@@ -31,16 +30,4 @@ class task1 extends Module {
         is (false.B) {io.br_taken := false.B}
     }
 
-
 }
-
-
-
-// def b = (io.branch === 1.B).asInstanceOf[Int]
-    // def c = b.asInstanceOf[Boolean]
-    // print(b)
-    // printf("%b \n",(io.branch.asUInt === 1.U))
-    // def check = if (true) branch(io) else false.B
-    // io.br_taken := check
-
-// println (( new chisel3 . stage . ChiselStage ) . emitVerilog (new task1 ) )

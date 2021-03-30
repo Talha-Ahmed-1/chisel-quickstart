@@ -47,6 +47,9 @@ class ex2 extends Module with Config{
     //     is (ALU_ADD) {out = sum}
     //     is (ALU_SUB) {out = sum}
     // }
+    // 
+
+    // val a = WireInit(32.W)
 
 
     // var out = 0.U
