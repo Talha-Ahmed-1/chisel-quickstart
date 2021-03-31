@@ -1,4 +1,4 @@
-package lab3
+package lab4
 
 import chisel3._
 import chisel3.util._
@@ -43,14 +43,15 @@ class ex1 extends Module with Config{
     val shiftl = Reverse ( shiftr )
     val out =
     Mux( io . alu_Op === ALU_ADD || io . alu_Op === ALU_SUB, sum ,
-    Mux( io . alu_Op === ALU_SLT  || io . alu_Op === ALU_SLTU , cmp ,
+    // Mux( io . alu_Op === ALU_SLT  || io . alu_Op === ALU_SLTU , cmp ,
+    Mux( (io . alu_Op === ALU_SLT  || io . alu_Op === ALU_SLTU) && (io.in_A < io.in_B ) , 1.U ,
     Mux( io . alu_Op === ALU_SRA  || io . alu_Op === ALU_SRL , shiftr ,
     Mux( io . alu_Op === ALU_SLL , shiftl ,
     Mux( io . alu_Op === ALU_AND  , ( io . in_A & io . in_B ) ,
     Mux( io . alu_Op === ALU_OR  , ( io . in_A | io . in_B ) ,
     Mux( io . alu_Op === ALU_XOR  , ( io . in_A ^ io . in_B ) ,
     Mux( io . alu_Op === ALU_COPY_A  , io . in_A ,
-    Mux( io . alu_Op === ALU_COPY_A  , io . in_B , 0. U ) ) ) ) ) ) ) ) )
+    Mux( io . alu_Op === ALU_COPY_B  , io . in_B , 0. U ) ) ) ) ) ) ) ) )
     io . out := out
     io . sum := sum
     }
