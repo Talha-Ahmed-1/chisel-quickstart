@@ -19,13 +19,12 @@ class ex1Tests extends FreeSpec with ChiselScalatestTester {
             val src_a = Random . nextLong () & 0xFFFFFFFFL
             val src_b = Random . nextLong () & 0xFFFFFFFFL
             // printf("-------------------$src_a--------------------")
-            val opr = Random . nextInt (12)
+            val opr = Random . nextInt (13)
             // val opr = 5
             println("---------------opr----------------",opr)
             println("---------------A----------------",src_a)
             println("---------------B----------------",src_b)
             val aluop = array_op ( opr )
-            // ALU functional implementation using Scala match
             val result = aluop match {
                 case ALU_ADD => src_a + src_b
                 case ALU_SUB => src_a - src_b
@@ -44,14 +43,7 @@ class ex1Tests extends FreeSpec with ChiselScalatestTester {
             val result1: BigInt = if ( result < 0 )
                 ( BigInt (0xFFFFFFFFL ) + result + 1) & 0xFFFFFFFFL
             else result & 0xFFFFFFFFL
-            // poke ( c . io . in_A , src_a . U )
-            // poke ( c . io . in_B , src_b . U )
-            // poke ( c . io . alu_Op , aluop )
-            // step (1)
-            // expect ( c . io . out , result1 . asUInt )
-            // }
-            // step (2)
-            // println("---------------Result----------------",result)
+
             println("---------------Result1----------------",result1.asUInt)
             c.io.in_A.poke(src_a.U)
             c.io.in_B.poke(src_b.U)

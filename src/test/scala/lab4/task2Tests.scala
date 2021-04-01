@@ -3,11 +3,27 @@ package lab4
 import org.scalatest._
 import chiseltest._
 import chisel3._
+import scala.util.Random
 
 class task2Tests extends FreeSpec with ChiselScalatestTester {
 
   "Lab 4 Task 2" in {
     test(new task2()) { c =>
+      val inst_array = Array("h06310013","h08216013", "h03f17013","h05814013")
+      for (i <- 0 until 100){
+        val inst = inst_array(Random.nextInt(4))
+        val result = inst match {
+          case ("h06310013") => 99
+          case ("h08216013") => 130
+          case ("h03f17013") => 63
+          case ("h05814013") => 88
+        }
+      println("---inst---",inst)
+        c.io.instr.poke(inst.U)
+        c.io.pc.poke(4.U)
+        c.io.immd_se.expect(result.U)
+      }
+
       // c.io.instr.poke(103838099.U)
       // c.io.instr.poke("h01700013".U)
       // c.io.pc.poke(1.U)
@@ -17,27 +33,6 @@ class task2Tests extends FreeSpec with ChiselScalatestTester {
     //   c.io.fnct3.poke("b000".U)
     //   c.io.branch.poke(1.B)
     //   c.io.br_taken.expect(1.B)
-
-      // def opcode = io.instr(6,0)
-
-      // val s_imm13 = Cat(io.instr(31,25),io.instr(11,7))
-      // val sb_imm13 = Cat (io.instr(31),io.instr(7),io.instr(30,25),io.instr(11,8),"b0".U)
-      // val uj_imm21 = Cat (io.instr(31),io.instr(19,12),io.instr(20),io.instr(30,21),"b0".U)
-
-      // val s = Cat(Fill(20,s_imm13(11)),s_imm13)
-      // val sb = (Cat(Fill(19,sb_imm13(12)),sb_imm13)) + io.pc
-      // val uj = (Cat(Fill(12,uj_imm21(20)),uj_imm21)) + io.pc
-      // val u = (Cat(Fill(12,io.instr(31)),io.instr(31,12))) << 12
-      // val i = Cat(Fill(20,io.instr(31)),io.instr(31,20))
-
-
-
-
-
-
-
-
-
 
     }
   }

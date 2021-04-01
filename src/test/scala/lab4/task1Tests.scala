@@ -20,7 +20,7 @@ class task1Tests extends FreeSpec with ChiselScalatestTester {
             val a = Random . nextLong () & 0xFFFFFFFFL
             val b = Random . nextLong () & 0xFFFFFFFFL
             val branch = Random.nextBoolean()
-            val ff = Random . nextInt (5)
+            val ff = Random . nextInt (6)
             val funct3 = array_funct3(ff)
             val result = funct3 match {
               case 0 => if (a == b) 1 else 0
