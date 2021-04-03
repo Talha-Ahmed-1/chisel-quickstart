@@ -1,0 +1,28 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~switch_2cross2|switch_2cross2>io_out2",
+    "sources":[
+      "~switch_2cross2|switch_2cross2>io_sel",
+      "~switch_2cross2|switch_2cross2>io_in1",
+      "~switch_2cross2|switch_2cross2>io_in2"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~switch_2cross2|switch_2cross2>io_out1",
+    "sources":[
+      "~switch_2cross2|switch_2cross2>io_sel",
+      "~switch_2cross2|switch_2cross2>io_in2",
+      "~switch_2cross2|switch_2cross2>io_in1"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"."
+  }
+]
