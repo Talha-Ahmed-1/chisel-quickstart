@@ -7,8 +7,11 @@ class ex3 [ T <: Data ]( n : Int , generic : T ) ( op : (T , T ) => T ) extends 
     require ( n > 0) // " reduce only works on non - empty Vecs "
     val io = IO (new Bundle {
         val in = Input ( Vec (n , generic ) )
-        val out = Output ( generic )
+        val out = Output ( Vec(n, generic ))
     })
 
-    io.out := io.in.reduce( op )
+    for (i <- 0 until n-1){
+        io.out(i) := io.in(i)
+    }
+    io.out(n-1) := io.in.reduce( op )
 }

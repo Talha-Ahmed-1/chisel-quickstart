@@ -13,8 +13,10 @@ class ex3Tests extends FreeSpec with ChiselScalatestTester {
       c.io.in(1).poke(4.U)
       c.io.in(2).poke(3.U)
       c.io.in(3).poke(2.U)
-    //   c.io.sel.poke(1.B)
-      c.io.out.expect(1.U)
+      c.io.out(0).expect(10.U)
+      c.io.out(1).expect(4.U)
+      c.io.out(2).expect(3.U)
+      c.io.out(3).expect(1.U)
     }
   }
 }
