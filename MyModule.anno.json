@@ -1,0 +1,31 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~MyModule|MyModule>io_outPacket_header",
+    "sources":[
+      "~MyModule|MyModule>io_inPacket_header"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~MyModule|MyModule>io_outPacket_addr",
+    "sources":[
+      "~MyModule|MyModule>io_inPacket_addr"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~MyModule|MyModule>io_outPacket_data",
+    "sources":[
+      "~MyModule|MyModule>io_inPacket_data"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"."
+  }
+]

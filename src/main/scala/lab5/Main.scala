@@ -6,10 +6,36 @@ import chisel3 . _
 import chisel3 . util . _
 
 object Main extends App{
-    // println (( new chisel3 . stage . ChiselStage ) . emitVerilog (new Adder(32.U) ))
-    println((new chisel3.stage.ChiselStage).emitVerilog(new Operator(4,UInt(16.W))(_&_)))
+    println (( new chisel3 . stage . ChiselStage ) . emitVerilog (new Router(UInt(16.W), UInt(16.W)) ))
+    // println((new chisel3.stage.ChiselStage).emitVerilog(new Operator(4,UInt(16.W))(_&_)))
 }
 
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+class Data1Packet[T<:Data](tipe:T) extends Bundle{
+    val addr = UInt(10.W)
+    val data = tipe
+    override def cloneType = (new Data1Packet(tipe)).asInstanceOf[this.type]
+}
+
+class Router[T<:Data](tipe:T, tipe1:T) extends Module{
+    val io = IO(new Bundle{
+        val in = Input(new Data1Packet(tipe))
+        val out = Output(new Data1Packet(tipe1))
+    })
+    
+    io.out <> io.in
+
+
+
+    // override def cloneType = ( new RouterInterface (tipe ) ) . asInstanceOf [ this . type ]
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 class Operator [ T <: Data ]( n : Int , generic : T ) ( op : (T , T ) => T ) extends Module {
