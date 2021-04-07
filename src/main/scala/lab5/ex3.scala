@@ -10,8 +10,8 @@ class ex3 [ T <: Data ]( n : Int , generic : T ) ( op : (T , T ) => T ) extends 
         val out = Output ( Vec(n, generic ))
     })
 
-    for (i <- 0 until n-1){
-        io.out(i) := io.in(i)
+    for (i <- 0 until n){
+        io.out(i) := io.in.reduce(op)
     }
-    io.out(n-1) := io.in.reduce( op )
+    // io.out(n-1) := io.in.reduce( op )
 }
