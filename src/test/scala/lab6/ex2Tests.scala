@@ -5,12 +5,11 @@ import chisel3 . util._
 import org.scalatest._
 import chiseltest._
 
-class PracticeTests extends FreeSpec with ChiselScalatestTester {
+class ex2Tests extends FreeSpec with ChiselScalatestTester {
 
   "Lab 5 Task 3" in {
-    test(new Practice) { c =>
-      c.io.in.bits.poke(5.U)
-      c.io.in.valid.poke(true.B)
+    test(new ex2(13)) { c =>
+      // c.io.in.poke("b1100".U)
       c.clock.step(20)
       // c.io.out.expect(0.B)
     }
