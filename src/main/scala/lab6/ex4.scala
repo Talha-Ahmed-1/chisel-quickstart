@@ -9,28 +9,16 @@ class ex4 extends Module {
        val out = Decoupled(UInt(8.W))
        })
 
-    val firstQueue = Queue(io.in, 5)
+    val firstQueue = Queue(io.in,5)
     val secondQueue = Queue(firstQueue,5)
-    io.out <> secondQueue
 
-    // io.out <> Queue(Queue(io.in,5),5)
+    firstQueue.nodeq()
+    secondQueue.nodeq()
+    when(secondQueue.valid && io.out.ready){
+        io.out.enq(secondQueue.deq())
+    }.otherwise{
+        io.out.bits := 0.U
+        io.out.valid := 0.B
+    }
 
-
-
-//     val firstQueue = Module(new Queue(UInt(), 5))
-//     val secondQueue = Module(new Queue(UInt(), 5))
-
-
-//     // when(io.in.valid){
-//     //     firstQueue.io.enq <> io.in
-//     // // }.elsewhen(io.in.valid){
-//     //     secondQueue.io.enq <> firstQueue.io.deq
-//     // }.elsewhen(io.out.ready){
-//     //     io.out <> secondQueue.io.deq
-//     // }.otherwise{io.out.bits := 0.U}
-
-//     firstQueue.io.enq <> io.in
-//     // secondQueue.io.enq <> firstQueue.io.deq
-//     // io.out <> firstQueue.io.deq 
-//     io.out.bits := 0.U
 }
