@@ -13,7 +13,7 @@ class task2[T<:Data](tipe:T, tipe1:T) extends Module{
     // val tipe1 = tipe
     val io = IO(new Bundle{
         val in = Input(new DataPacket(tipe))
-        val out = Output(new DataPacket(tipe))
+        val out = Output(new DataPacket(tipe1))
     })
     
     io.out <> io.in
