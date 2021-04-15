@@ -27,28 +27,28 @@ class task1 extends Module {
 
 
     arbiter.io.out.ready := 1.B
-    when(arbiter.io.in(0).valid){
+    when(io.requestor(0).valid === true.B){
         val vv = Reg(Vec(4, UInt()))
         vv(0) := arbiter.io.out.bits
         vv(1) := 0.U
         vv(2) := 0.U
         vv(3) := 0.U
         mem.write(io.Writeaddr, vv)
-    }.elsewhen(arbiter.io.in(1).valid){
+    }.elsewhen(io.requestor(1).valid === true.B){
         val vv = Reg(Vec(4, UInt()))
         vv(0) := 0.U
         vv(1) := arbiter.io.out.bits
         vv(2) := 0.U
         vv(3) := 0.U
         mem.write(io.Writeaddr, vv)
-    }.elsewhen(arbiter.io.in(2).valid){
+    }.elsewhen(io.requestor(2).valid === true.B){
         val vv = Reg(Vec(4, UInt()))
         vv(0) := 0.U
         vv(1) := 0.U
         vv(2) := arbiter.io.out.bits
         vv(3) := 0.U
         mem.write(io.Writeaddr, vv)
-    }.elsewhen(arbiter.io.in(3).valid){
+    }.elsewhen(io.requestor(3).valid === true.B){
         val vv = Reg(Vec(4, UInt()))
         vv(0) := 0.U
         vv(1) := 0.U
@@ -56,11 +56,42 @@ class task1 extends Module {
         vv(3) := arbiter.io.out.bits
         mem.write(io.Writeaddr, vv)
     }
-
-
-
     // mem.write(io.Writeaddr, vec)
     io.memory_out := mem.read(io.Readaddr)
 
-
 }
+
+
+
+
+
+
+// when(arbiter.io.in(0).valid === true.B){
+//         val vv = Reg(Vec(4, UInt()))
+//         vv(0) := arbiter.io.out.bits
+//         vv(1) := 0.U
+//         vv(2) := 0.U
+//         vv(3) := 0.U
+//         mem.write(io.Writeaddr, vv)
+//     }.elsewhen(arbiter.io.in(1).valid === true.B){
+//         val vv = Reg(Vec(4, UInt()))
+//         vv(0) := 0.U
+//         vv(1) := arbiter.io.out.bits
+//         vv(2) := 0.U
+//         vv(3) := 0.U
+//         mem.write(io.Writeaddr, vv)
+//     }.elsewhen(arbiter.io.in(2).valid === true.B){
+//         val vv = Reg(Vec(4, UInt()))
+//         vv(0) := 0.U
+//         vv(1) := 0.U
+//         vv(2) := arbiter.io.out.bits
+//         vv(3) := 0.U
+//         mem.write(io.Writeaddr, vv)
+//     }.elsewhen(arbiter.io.in(3).valid === true.B){
+//         val vv = Reg(Vec(4, UInt()))
+//         vv(0) := 0.U
+//         vv(1) := 0.U
+//         vv(2) := 0.U
+//         vv(3) := arbiter.io.out.bits
+//         mem.write(io.Writeaddr, vv)
+//     }
