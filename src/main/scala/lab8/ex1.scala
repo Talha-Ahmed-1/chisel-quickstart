@@ -18,7 +18,7 @@ class ex1 extends Module {
     val mem = SyncReadMem(1024,Vec(4,UInt(width.W)))
 
     when(io.write === true.B){
-        val cc = Cat(io.mask(0),io.mask(1),io.mask(2),io.mask(3))
+        val cc = Cat(io.mask(3),io.mask(2),io.mask(1),io.mask(0))
         when(cc === 0.U){
             val vv = Reg(Vec(4, UInt()))
             vv(0) := 0.U
@@ -28,38 +28,38 @@ class ex1 extends Module {
             mem.write(io.addr, vv)
         }.elsewhen(cc === 1.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := 0.U
+            vv(0) := io.dataIn(0)
             vv(1) := 0.U
             vv(2) := 0.U
-            vv(3) := io.dataIn(3)
+            vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 2.U){
             val vv = Reg(Vec(4, UInt()))
             vv(0) := 0.U
-            vv(1) := 0.U
-            vv(2) := io.dataIn(2)
+            vv(1) := io.dataIn(1)
+            vv(2) := 0.U
             vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 3.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := 0.U
+            vv(0) := io.dataIn(0)
             vv(1) := io.dataIn(1)
-            vv(2) := io.dataIn(2)
+            vv(2) := 0.U
             vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 4.U){
             val vv = Reg(Vec(4, UInt()))
             vv(0) := 0.U
-            vv(1) := io.dataIn(1)
-            vv(2) := 0.U
+            vv(1) := 0.U
+            vv(2) := io.dataIn(2)
             vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 5.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := 0.U
-            vv(1) := io.dataIn(1)
-            vv(2) := 0.U
-            vv(3) := io.dataIn(3)
+            vv(0) := io.dataIn(0)
+            vv(1) := 0.U
+            vv(2) := io.dataIn(2)
+            vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 6.U){
             val vv = Reg(Vec(4, UInt()))
@@ -70,17 +70,17 @@ class ex1 extends Module {
             mem.write(io.addr, vv)
         }.elsewhen(cc === 7.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := 0.U
+            vv(0) := io.dataIn(0)
             vv(1) := io.dataIn(1)
             vv(2) := io.dataIn(2)
-            vv(3) := io.dataIn(3)
+            vv(3) := 0.U
             mem.write(io.addr, vv)
         }.elsewhen(cc === 8.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
+            vv(0) := 0.U
             vv(1) := 0.U
             vv(2) := 0.U
-            vv(3) := 0.U
+            vv(3) := io.dataIn(3)
             mem.write(io.addr, vv)
         }.elsewhen(cc === 9.U){
             val vv = Reg(Vec(4, UInt()))
@@ -91,38 +91,38 @@ class ex1 extends Module {
             mem.write(io.addr, vv)
         }.elsewhen(cc === 10.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
-            vv(1) := 0.U
-            vv(2) := io.dataIn(2)
-            vv(3) := 0.U
-            mem.write(io.addr, vv)
-        }.elsewhen(cc === 11.U){
-            val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
-            vv(1) := io.dataIn(1)
-            vv(2) := io.dataIn(2)
-            vv(3) := 0.U
-            mem.write(io.addr, vv)
-        }.elsewhen(cc === 12.U){
-            val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
-            vv(1) := io.dataIn(1)
-            vv(2) := 0.U
-            vv(3) := 0.U
-            mem.write(io.addr, vv)
-        }.elsewhen(cc === 13.U){
-            val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
+            vv(0) := 0.U
             vv(1) := io.dataIn(1)
             vv(2) := 0.U
             vv(3) := io.dataIn(3)
             mem.write(io.addr, vv)
-        }.elsewhen(cc === 14.U){
+        }.elsewhen(cc === 11.U){
             val vv = Reg(Vec(4, UInt()))
-            vv(0) := io.dataIn(0)
+            vv(0) := 0.U
             vv(1) := io.dataIn(1)
             vv(2) := io.dataIn(2)
-            vv(3) := 0.U
+            vv(3) := io.dataIn(3)
+            mem.write(io.addr, vv)
+        }.elsewhen(cc === 12.U){
+            val vv = Reg(Vec(4, UInt()))
+            vv(0) := 0.U
+            vv(1) := 0.U
+            vv(2) := io.dataIn(2)
+            vv(3) := io.dataIn(3)
+            mem.write(io.addr, vv)
+        }.elsewhen(cc === 13.U){
+            val vv = Reg(Vec(4, UInt()))
+            vv(0) := io.dataIn(0)
+            vv(1) := 0.U
+            vv(2) := io.dataIn(2)
+            vv(3) := io.dataIn(3)
+            mem.write(io.addr, vv)
+        }.elsewhen(cc === 14.U){
+            val vv = Reg(Vec(4, UInt()))
+            vv(0) := 0.U
+            vv(1) := io.dataIn(1)
+            vv(2) := io.dataIn(2)
+            vv(3) := io.dataIn(3)
             mem.write(io.addr, vv)
         }.elsewhen(cc === 15.U){
             val vv = Reg(Vec(4, UInt()))
